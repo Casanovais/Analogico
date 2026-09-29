@@ -1,0 +1,20 @@
+{
+  "name": "differential_pair_blocks",
+  "boundary": [40, 32],
+  "spacing": 1,
+  "devices": [
+    {"name": "M1", "width": 4, "height": 4, "x": 5, "y": 5},
+    {"name": "M2", "width": 4, "height": 4, "x": 31, "y": 5},
+    {"name": "M3", "width": 5, "height": 4, "x": 6, "y": 24},
+    {"name": "M4", "width": 5, "height": 4, "x": 29, "y": 24},
+    {"name": "Mtail", "width": 6, "height": 4, "x": 17, "y": 15}
+  ],
+  "symmetry_pairs": [["M1", "M2"], ["M3", "M4"]],
+  "centered": ["Mtail"],
+  "nets": [
+    {"name": "tail", "devices": ["M1", "M2", "Mtail"], "weight": 2},
+    {"name": "out_p", "devices": ["M1", "M3"], "weight": 1},
+    {"name": "out_n", "devices": ["M2", "M4"], "weight": 1},
+    {"name": "load_bias", "devices": ["M3", "M4"], "weight": 1}
+  ]
+}

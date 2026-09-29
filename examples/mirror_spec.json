@@ -1,0 +1,12 @@
+{
+  "reference_current_ua": 20,
+  "max_copy_error_percent": 5,
+  "output_voltage_range_v": [0.6, 1.6],
+  "max_reference_voltage_v": 0.9,
+  "minimum_bandwidth_hz": 10000000,
+  "corners": ["tt", "ss", "ff"],
+  "temperatures_c": [-20, 27, 85],
+  "width_candidates_um": [1, 2, 3, 4, 6],
+  "length_candidates_um": [0.3, 0.5, 0.75, 1, 1.5, 2],
+  "column_candidates": [2, 3]
+}
