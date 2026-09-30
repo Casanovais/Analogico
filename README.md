@@ -94,3 +94,11 @@ or generator-source hashes. The package includes source and file checksums.
 This is a review-qualified SKY130 current mirror. Commercial-tool import,
 full RC extraction, mismatch/yield and foundry signoff remain outstanding.
 See [commercial integration and model scope](docs/COMMERCIAL_INTEGRATION.md).
+
+## Verified synthetic data and RL pilot
+
+Run `sbatch scripts/run_dataset_rl.sbatch` for a 36-case SKY130 measured dataset
+and neural REINFORCE versus random/Bayesian search, with 30 µA held out from
+training. Experimental detailed-RC and seeded mismatch probes are available
+through `scripts/run_rc_probe.sbatch` and `scripts/run_mismatch_probe.sbatch`.
+See [data audit, experiment results and limits](docs/DATA_AND_RL.md).
