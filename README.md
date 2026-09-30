@@ -80,3 +80,17 @@ Next research steps: choose a target PDK and circuit family, add pin-aware
 placement and routing, integrate actual DRC/LVS and simulation, then train and
 evaluate a placement policy against this baseline. Keep generated artifacts
 under this project in `/data/02` and shared datasets unchanged in `/data/db`.
+
+## Qualified review handoff
+
+`sbatch scripts/run_handoff.sbatch` regenerates the smallest passing design from
+review 4057 (W=2 µm, L=1.5 µm, two columns), runs the test suite and 18
+schematic/capacitance-extracted simulations, and builds a handoff under
+`results/handoff-<job-id>/package`. `qualification.py` rejects missing or duplicate
+corner coverage, nonfinite/missing measurements, specification violations,
+failed physical checks, inconsistent raw verification logs and changed layout
+or generator-source hashes. The package includes source and file checksums.
+
+This is a review-qualified SKY130 current mirror. Commercial-tool import,
+full RC extraction, mismatch/yield and foundry signoff remain outstanding.
+See [commercial integration and model scope](docs/COMMERCIAL_INTEGRATION.md).
