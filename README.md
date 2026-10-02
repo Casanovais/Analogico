@@ -102,3 +102,11 @@ and neural REINFORCE versus random/Bayesian search, with 30 µA held out from
 training. Experimental detailed-RC and seeded mismatch probes are available
 through `scripts/run_rc_probe.sbatch` and `scripts/run_mismatch_probe.sbatch`.
 See [data audit, experiment results and limits](docs/DATA_AND_RL.md).
+
+## Amplifier/OTA prototype
+
+The [OTA flow and measured RL comparison](docs/OTA_FLOW.md) documents executable
+specification-to-layout generation, independent DRC/LVS, corner simulation,
+compensation screening, transient diagnostics, robust synthetic data and the
+local licensed-workstation interface. Run `sbatch scripts/run_ota.sbatch` to
+evaluate a specification. Failed electrical targets are retained and rejected.

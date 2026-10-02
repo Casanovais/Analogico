@@ -11,7 +11,7 @@ import numpy as np
 from physical_flow import ROOT, command, mirror_instance
 
 
-def sample(netlist, output, seed, enabled, pair=False):
+def sample(netlist, output, seed, enabled, pair=False, reference_ua=20):
     output.mkdir(parents=True,exist_ok=False)
     models=ROOT/'pdks/sky130A/libs.ref/sky130_fd_pr/spice'
     (output/'.spiceinit').write_text(f'set ngbehavior=hsa\nset ng_nomodcheck\nset sourcepath = ( . {models} )\nset rndseed = {seed}\n')
@@ -20,7 +20,7 @@ VD1 D1 0 1
 VD2 D2 0 1
 X1 D1 G 0 0 sky130_fd_pr__nfet_01v8 w=2 l=1.5
 X2 D2 G 0 0 sky130_fd_pr__nfet_01v8 w=2 l=1.5
-''' if pair else netlist+f'\nIREF 0 VREF 20u\nVOUT VOUT 0 1\n{mirror_instance(netlist)}\n'
+''' if pair else netlist+f'\nIREF 0 VREF {reference_ua}u\nVOUT VOUT 0 1\n{mirror_instance(netlist)}\n'
     deck=f'''Mismatch probe
 .include "{models/'sky130_fd_pr__nfet_01v8__tt.corner.spice'}"
 .option scale=1e-6
@@ -44,7 +44,7 @@ set wr_singlescale
     if not np.all(np.isfinite(measurements)): raise ValueError('Invalid measurement')
     if pair:
         return float(measurements[0,1]/measurements[0,2])
-    ratios=-measurements[:,2]/20e-6
+    ratios=-measurements[:,2]/(reference_ua*1e-6)
     return dict(seed=seed,worst_error_percent=float(np.max(np.abs(ratios-1))*100),
                 ratio_at_1v=float(ratios[8]),pass_dc_copy_spec=bool(np.max(np.abs(ratios-1))<=.05))
 

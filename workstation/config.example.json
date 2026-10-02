@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {"kind":"drc", "argv":["/path/to/local-drc-wrapper", "{gds}", "{output}/drc.json"], "report":"drc.json"},
+    {"kind":"lvs", "argv":["/path/to/local-lvs-wrapper", "{gds}", "{schematic}", "{output}/lvs.json"], "report":"lvs.json"},
+    {"kind":"pex", "argv":["/path/to/local-pex-wrapper", "{gds}", "{output}/pex.json"], "report":"pex.json"},
+    {"kind":"simulation", "argv":["/path/to/local-simulation-wrapper", "{output}/pex.json", "{output}/simulation.json"], "report":"simulation.json"}
+  ]
+}

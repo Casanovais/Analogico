@@ -1,0 +1,28 @@
+{
+  "technology": "SKY130A",
+  "supply_v": 1.8,
+  "common_mode_v": 0.9,
+  "load_pf": 2.0,
+  "diffpair_bias_ua": 10.0,
+  "common_source_bias_ua": 10.0,
+  "minimum_gain_db": 40.0,
+  "minimum_unity_gain_hz": 5000000.0,
+  "minimum_phase_margin_deg": 60.0,
+  "maximum_power_mw": 1.0,
+  "maximum_tracking_error_mv": 20.0,
+  "tracking_input_range_v": [0.8, 1.1],
+  "corners": ["tt", "ss", "ff"],
+  "temperatures_c": [-20, 27, 85],
+  "generator": {
+    "half_diffpair_params": [6, 1, 4],
+    "diffpair_bias": [6, 2, 4],
+    "half_common_source_params": [7, 1, 10, 3],
+    "half_common_source_bias": [6, 2, 8, 2],
+    "half_pload": [6, 1, 6],
+    "mim_cap_size": [12, 12],
+    "mim_cap_rows": 3,
+    "rmult": 2,
+    "with_antenna_diode_on_diffinputs": 0,
+    "add_output_stage": false
+  }
+}
